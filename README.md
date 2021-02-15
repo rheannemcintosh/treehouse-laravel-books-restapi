@@ -1,3 +1,12 @@
+# Laravel Books REST API
+A Laravel REST API which handle the Create, Read, Update and Delete of Books from a database.
+
+## Repository Information
+- **Language:** Laravel 8 (PHP)
+- **Tutorial:** [Build a REST API with Laravel](https://teamtreehouse.com/library/build-a-rest-api-with-laravel)
+- **Website:** [Treehouse](https://teamtreehouse.com)
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
