@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
+use App\Http\Resources\AuthorResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AuthorController extends Controller
 {
@@ -13,7 +16,7 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        return response(Author::all(), 200);
+        return response(AuthorResource::collection(Author::all(), 200));
     }
 
     /**
@@ -24,14 +27,14 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $validate = Validator::make($request->toArray(), [
             'name'    => 'required',
             'title'   => 'required',
             'company' => 'required',
             'email'   => 'required'
         ]);
 
-        return response(Author::create($data), 201);
+        return response(new AuthorResource(Author::create($validate->validate())), 201);
     }
 
     /**
@@ -42,7 +45,7 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
-        return response($author, 200);
+        return response(new AuthorResource($author), 200);
     }
 
     /**
@@ -54,13 +57,14 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        $data = $request->validate([
+        $validate = Validator::make($request->toArray(), [
             'name'    => 'required',
             'title'   => 'required',
             'company' => 'required',
             'email'   => 'required'
         ]);
-        return response($author->update($data), 200);
+        $author->update($validate->validate());
+        return response(new AuthorResource($author), 201);
     }
 
     /**
