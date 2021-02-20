@@ -17,17 +17,7 @@ use App\Http\Controllers\BookController;
 */
 
 // Author API Routes
-Route::get('authors', [AuthorController::class, 'index']);
-Route::post('authors', [AuthorController::class, 'store']);
-Route::get('authors/{author}', [AuthorController::class, 'show']);
-Route::put('authors/{author}', [AuthorController::class, 'update']);
-Route::patch('authors/{author)', [AuthorController::class, 'update']);
-Route::delete('authors/{author}', [AuthorController::Class, 'destroy']);
-
-// Book API Routes
-Route::get('books', [BookController::class, 'index']);
-Route::post('books', [BookController::class, 'store']);
-Route::get('books/{book}', [BookController::class, 'show']);
-Route::put('books/{book}', [BookController::class, 'update']);
-Route::patch('books/{book)', [BookController::class, 'update']);
-Route::delete('books/{book}', [BookController::Class, 'destroy']);
+Route::apiResources([
+    'authors' => AuthorController::class,
+    'books'   => BookController::class,
+]);
